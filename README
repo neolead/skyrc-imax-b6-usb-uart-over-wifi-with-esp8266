@@ -1,0 +1,6 @@
+Skyrc IMAX B6 - uart to serial port over esp8266 client-server
+Server part is for native esp8266 client part for nodemcu or esp8266+ftdi(uart to serial)
+
+Remark: If you got bad uart signal :
+Remove resistor R4 https://github.com/neolead/skyrc-imax-b6-usb-uart-over-wifi-with-esp8266/raw/main/uart.jpg
+thanks to : https://github.com/stawel/cheali-charger/issues/256
