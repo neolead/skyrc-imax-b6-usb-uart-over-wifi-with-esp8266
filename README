@@ -8,6 +8,9 @@ Software for monitoring:
 LogView
 DataExplorer
 
+After tests, i put esp8266 inside imax, i soldered +5v(with step down voltage to 3.3, from back side of the screen, 2nd pin), gnd and uart from connector.
+
+
 Remark: If you got bad uart signal :
 Remove resistor R4 https://github.com/neolead/skyrc-imax-b6-usb-uart-over-wifi-with-esp8266/raw/main/uart.jpg
 thanks to : https://github.com/stawel/cheali-charger/issues/256
