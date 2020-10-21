@@ -9,16 +9,15 @@
 
 #include <ESP8266WiFi.h>
 
+
 //how many clients should be able to telnet to this ESP8266
 #define MAX_SRV_CLIENTS 1
 #define TCP_PORT (23)           // Choose any port you want
 WiFiServer tcpServer(TCP_PORT);
 WiFiClient tcpServerClients[MAX_SRV_CLIENTS];
-
 IPAddress apIP(192, 168, 4, 1);
 const char SSID[] = "TCPUARTBridge";  // Choose any SSID
-//const char PASSWORD[] = "12345678"; // minimum 8 characters. !!!CHANGE THIS!!!
-const char PASSWORD[] = "12345678"; // minimum 8 characters. !!!CHANGE THIS!!!
+const char PASSWORD[] = "12345678"; // minimum 8 characters.
 
 #define SerialDebug Serial1   // Debug goes out on GPIO02
 #define SerialGPS   Serial    // GPS or other device connected to the ESP UART
@@ -28,16 +27,13 @@ const char PASSWORD[] = "12345678"; // minimum 8 characters. !!!CHANGE THIS!!!
 #endif
 
 void setup() {
+  WiFi.setSleepMode(WIFI_NONE_SLEEP);
   // !!! Debug output goes to GPIO02 !!!
   SerialDebug.begin(9600);
   SerialDebug.println("TCP <-> UART bridge");
-
   WiFi.mode(WIFI_AP);
   WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
   WiFi.softAP(SSID, PASSWORD);
-
-  //start UART. Be sure to set the speed to match the speed of whatever is
-  //connected  to the UART.
   SerialGPS.begin(9600);
 
   // Start TCP listener on port TCP_PORT
