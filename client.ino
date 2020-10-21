@@ -6,7 +6,7 @@
   remove resistor R4 https://github.com/neolead/skyrc-imax-b6-usb-uart-over-wifi-with-esp8266/raw/main/uart.jpg
   thanks to : https://github.com/stawel/cheali-charger/issues/256
   Created by neolead: janvarry@gmail.com nov.2020
-  thx to Tom Igoe 
+  main part maid by from by Tom Igoe 
  */
 
 #include <ESP8266WiFi.h>
@@ -24,9 +24,11 @@ int port = 23;
 WiFiClient client;
 
 void setup() {
+  WiFi.setSleepMode(WIFI_NONE_SLEEP);
   Serial.begin(9600);
   pinMode(MY_BLUE_LED_PIN, OUTPUT); 
   delay(10);
+
 
   // We start by connecting to a WiFi network
 
@@ -56,7 +58,7 @@ void setup() {
       }
   else {
     // if you didn't get a connection to the server:
-    Serial.println("connection to server failed");
+//    Serial.println("connection to server failed");
     digitalWrite(MY_BLUE_LED_PIN, LOW);
     delay(200);
     digitalWrite(MY_BLUE_LED_PIN, HIGH);
@@ -101,7 +103,6 @@ void loop()
     delay(1000);
     digitalWrite(MY_BLUE_LED_PIN, LOW);
     delay(10);
-   
     client.stop();
     delay(1000);
   }
